@@ -15,4 +15,6 @@ def create_checkout_session():
 
 
 csession = create_checkout_session()
+csession_url = csession.url
+st.markdown(f"<a href='{csession_url}' target='_blank'><button>Checkout</button></a>", unsafe_allow_html=True)
 print(csession)
