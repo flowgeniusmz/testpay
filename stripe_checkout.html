@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Stripe Checkout</title>
+  <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+  <!-- Create a button that your customers click to complete their purchase. -->
+  <button
+    style="background-color:#6772E5;color:#FFF;padding:8px 12px;border:0;border-radius:4px;font-size:1em;cursor:pointer"
+    id="checkout-button-price_1OtiMoDvYq7iSz1pPiR80fVV"
+    role="link"
+    type="button"
+  >
+    Checkout
+  </button>
+
+  <div id="error-message"></div>
+
+  <script>
+  (function() {
+    var stripe = Stripe('pk_test_51OEP9VDvYq7iSz1pimUZipoNaLzZzc05H8M48zgdkoNuPaq1R8Q26baEcwybVPP7kRrfKiFM7MdHzv0mgLdK1Chi00b78eoTf7');
+
+    var checkoutButton = document.getElementById('checkout-button-price_1OtiMoDvYq7iSz1pPiR80fVV');
+    checkoutButton.addEventListener('click', function () {
+      stripe.redirectToCheckout({
+        lineItems: [{price: 'price_1OtiMoDvYq7iSz1pPiR80fVV', quantity: 1}],
+        mode: 'payment',
+        successUrl: window.location.protocol + '//testpayfg.streamlit.app',
+        cancelUrl: window.location.protocol + '//testpayfg.streamlit.app',
+      })
+      .then(function (result) {
+        if (result.error) {
+          var displayError = document.getElementById('error-message');
+          displayError.textContent = result.error.message;
+        }
+      });
+    });
+  })();
+  </script>
+</body>
+</html>
