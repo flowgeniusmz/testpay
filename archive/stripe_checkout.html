@@ -26,8 +26,8 @@
       stripe.redirectToCheckout({
         lineItems: [{price: 'price_1OtiMoDvYq7iSz1pPiR80fVV', quantity: 1}],
         mode: 'payment',
-        successUrl: window.location.protocol + '//testpayfg.streamlit.app',
-        cancelUrl: window.location.protocol + '//testpayfg.streamlit.app',
+        successUrl: window.location.protocol + '//home',
+        cancelUrl: window.location.protocol + '//home',
       })
       .then(function (result) {
         if (result.error) {
