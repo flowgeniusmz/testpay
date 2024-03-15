@@ -2,7 +2,7 @@ import streamlit as st
 import stripe
 from stripe_paywall import stripe_sessionstate as ss
 
-def create_checkout_session():
+def create_checkout_session_dev():
     session = stripe.checkout.Session.create(
         api_key = st.secrets.stripe_api_key_test,
         line_items=[{"price": 'price_1OtiMoDvYq7iSz1pPiR80fVV', "quantity": 1}],
@@ -10,6 +10,21 @@ def create_checkout_session():
         ui_mode="hosted",
         success_url="https://reimagined-space-journey-pj74pv5j79p2r65v-8503.app.github.dev?session_id={CHECKOUT_SESSION_ID}",
         cancel_url="https://reimagined-space-journey-pj74pv5j79p2r65v-8503.app.github.dev/"
+    )
+    
+    st.session_state.stripe_session = session
+    ss.update_sessionstate_checkout_creation(varCheckoutSessionId=session.id, varCheckoutSessionURL=session.url)
+    print(session)
+    return session
+
+def create_checkout_session():
+    session = stripe.checkout.Session.create(
+        api_key = st.secrets.stripe_api_key_test,
+        line_items=[{"price": 'price_1OtiMoDvYq7iSz1pPiR80fVV', "quantity": 1}],
+        mode="payment",
+        ui_mode="hosted",
+        success_url="https://testpayfg.streamlit.app?session_id={CHECKOUT_SESSION_ID}",
+        cancel_url="https://testpayfg.streamlit.app"
     )
     
     st.session_state.stripe_session = session
