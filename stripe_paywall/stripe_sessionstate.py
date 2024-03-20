@@ -2,16 +2,15 @@ import streamlit as st
 import stripe
 
 def session_state_initial():
-    if "stripe_line_items" not in st.session_state:
+    if "stripe_initialized" not in st.session_state:
         st.session_state.stripe_stripe_line_items = [{"price": 'price_1OtiMoDvYq7iSz1pPiR80fVV', "quantity": 1}]
-    if "stripe_mode" not in st.session_state:
         st.session_state.stripe_mode = "payment"
-    if "stripe_ui_mode" not in st.session_state:
+        st.session_state.stripe_ui_mode = "hosted"
         st.session_state.stripe_ui_mode = "hosted"
     if "stripe_successurl" not in st.session_state:
-        st.session_state.stripe_stripe_successurl = "https://reimagined-space-journey-pj74pv5j79p2r65v-8503.app.github.dev?session_id={CHECKOUT_SESSION_ID}"
+        st.session_state.stripe_stripe_successurl = "https://chat.daddybets.gpt/return?session_id={CHECKOUT_SESSION_ID}"
     if "stripe_cancelurl" not in st.session_state:
-        st.session_state.stripe_cancelurl = "https://reimagined-space-journey-pj74pv5j79p2r65v-8503.app.github.dev/"
+        st.session_state.stripe_cancelurl = "https://chat.daddybets.gpt/"
     if "stripe_session_id" not in st.session_state:
         st.session_state.stripe_session_id = None
     if "stripe_payment_status" not in st.session_state:
