@@ -10,7 +10,7 @@ def session_state_initial():
     if "stripe_successurl" not in st.session_state:
         st.session_state.stripe_stripe_successurl = "https://dev.daddybetsgpt.com/return?session_id={CHECKOUT_SESSION_ID}"
     if "stripe_cancelurl" not in st.session_state:
-        st.session_state.stripe_cancelurl = "https://chat.daddybetsgpt.com"
+        st.session_state.stripe_cancelurl = "https://dev.daddybetsgpt.com"
     if "stripe_session_id" not in st.session_state:
         st.session_state.stripe_session_id = None
     if "stripe_payment_status" not in st.session_state:
