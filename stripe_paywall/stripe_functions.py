@@ -23,7 +23,7 @@ def create_checkout_session():
         line_items=[{"price": 'price_1OtiMoDvYq7iSz1pPiR80fVV', "quantity": 1}],
         mode="payment",
         ui_mode="hosted",
-        success_url="https://dev.daddybetsgpt.com?session_id={CHECKOUT_SESSION_ID}",
+        success_url="https://dev.daddybetsgpt.com/return?session_id={CHECKOUT_SESSION_ID}",
         cancel_url="https://dev.daddybetsgpt.com/"
     )
     
