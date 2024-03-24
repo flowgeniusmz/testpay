@@ -9,15 +9,23 @@ def get_checkout_button():
         type="primary"
     )
 
+def get_username_field():
+    username_field = st.text_input(label="Username (Email)")
+   
+
+
+
 def get_checkout_proceed_button():
+    username_field = st.text_input(label="Username (Email)")
+    pfield = st.text_input(label="Password", type="password")
     proceed_button = st.button(
         label="Proceed to checkout?",
         key="button1",
         type="primary"
     )
-    if proceed_button:
+    if proceed_button and username_field is not None and pfield is not None:
         st.divider()
-        checkout_session = sf.create_checkout_session()
+        checkout_session = sf.create_checkout_session45(varUsername=username_field, varPassword=pfield)
         get_checkout_button()
 
 def get_checkout_container():
