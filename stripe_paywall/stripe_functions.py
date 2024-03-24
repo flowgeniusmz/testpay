@@ -61,6 +61,8 @@ def get_query_params():
         "session_id",
         None
     )
+    payment_complete = st.query_params.get("payment_complete", None)
+    st.write(payment_complete)
     
     print(query_params)
     return query_params
