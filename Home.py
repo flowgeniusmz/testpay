@@ -22,9 +22,9 @@ if queryp is not None:
     form = st.form(key="supabase")
     with form:
 
-        username = st.text_input(label="username", value=updated_session.customer_details.email, disabled=True)
-        username1 = st.text_input(label="username1", value=uname)
-        credential = st.text_input(label="credential", type="password", value=cred)
+        #username = st.text_input(label="username", value=updated_session.customer_details.email, disabled=True)
+        username = st.text_input(label="Username", value=uname)
+        credential = st.text_input(label="Password", type="password", value=cred)
         submit = st.form_submit_button(label="Submit", type="primary")
         if submit:
             if credential is not None:

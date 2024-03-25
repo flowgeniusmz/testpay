@@ -80,9 +80,9 @@ def get_query_params():
     qp_username = st.query_params.get("username", None)
     qp_cred = st.query_params.get("credential", None)
     payment_complete = st.query_params.get("payment_complete", None)
-    st.write(payment_complete)
-    st.write(qp_username)
-    st.write(qp_cred)
+    #st.write(payment_complete)
+    #st.write(qp_username)
+    #st.write(qp_cred)
     
     
     return query_params_sessionid
