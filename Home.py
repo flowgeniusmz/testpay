@@ -2,6 +2,8 @@ import streamlit as st
 from stripe_paywall import stripe_display as sdisplay, stripe_functions as sfunction, stripe_sessionstate as ssession
 import tease_name as tn
 
+sdisplay.display_background_image()
+
 # 1. Initialize session states
 ssession.session_state_initial()
 
