@@ -73,15 +73,19 @@ def retrieve_checkout_session1(varCheckoutSessionId):
     return updated_session
 
 def get_query_params():
-    query_params = st.query_params.get(
+    query_params_sessionid = st.query_params.get(
         "session_id",
         None
     )
+    qp_username = st.query_params.get("username", None)
+    qp_cred = st.query_params.get("credential", None)
     payment_complete = st.query_params.get("payment_complete", None)
     st.write(payment_complete)
+    st.write(qp_username)
+    st.write(qp_cred)
     
-    print(query_params)
-    return query_params
+    
+    return query_params_sessionid
 
 def get_query_params_username():
     qp_username = st.query_params.get("username", None)

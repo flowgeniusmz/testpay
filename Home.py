@@ -13,6 +13,8 @@ ssession.session_state_initial()
 # 4. Get values
 queryp = sfunction.get_query_params()
 if queryp is not None:
+    uname = st.query_params.get("username", None)
+    cred = st.query_params.get("credential", None)
     updated_session = sfunction.retrieve_checkout_session2(varSessionId = queryp)
     name = updated_session.customer_details.name
     nameroast = tn.get_name_roast(varUserName=name)
@@ -21,7 +23,8 @@ if queryp is not None:
     with form:
 
         username = st.text_input(label="username", value=updated_session.customer_details.email, disabled=True)
-        credential = st.text_input(label="credential", type="password")
+        username1 = st.text_input(label="username1", value=uname)
+        credential = st.text_input(label="credential", type="password", value=cred)
         submit = st.form_submit_button(label="Submit", type="primary")
         if submit:
             if credential is not None:
