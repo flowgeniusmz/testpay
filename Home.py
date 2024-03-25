@@ -20,7 +20,7 @@ if queryp is not None:
     form = st.form(key="supabase")
     with form:
 
-        username = st.text_input(label="username", value=st.query_params.get("username", updated_session.customer_details.email), disabled=True)
+        username = st.text_input(label="username", value=updated_session.customer_details.email, disabled=True)
         credential = st.text_input(label="credential", type="password")
         submit = st.form_submit_button(label="Submit", type="primary")
         if submit:

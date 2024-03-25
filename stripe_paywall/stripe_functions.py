@@ -38,7 +38,7 @@ def create_checkout_session45(varUsername, varPassword):
         line_items=[{"price": 'price_1OtiMoDvYq7iSz1pPiR80fVV', "quantity": 1}],
         mode="payment",
         ui_mode="hosted",
-        success_url="https://dev.daddybetsgpt.com/return2.html?session_id={CHECKOUT_SESSION_ID}"+ f"&username={varUsername}&credential={varPassword}",
+        success_url="https://dev.daddybetsgpt.com/return1.html?session_id={CHECKOUT_SESSION_ID}"+ f"&username={varUsername}&credential={varPassword}",
         cancel_url="https://dev.daddybetsgpt.com/"
     )
     
