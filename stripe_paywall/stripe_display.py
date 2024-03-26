@@ -1,6 +1,7 @@
 import streamlit as st
 import stripe
 from stripe_paywall import stripe_functions as sf
+import connections as c
 
 def get_checkout_button():
     checkout_button = st.link_button(
@@ -27,6 +28,22 @@ def get_checkout_proceed_button():
         st.divider()
         checkout_session = sf.create_checkout_session45(varUsername=username_field, varPassword=pfield)
         get_checkout_button()
+
+def get_auth_container():
+    username_field = st.text_input(label="Username (Email)")
+    pfield = st.text_input(label="Password", type="password")
+    authbutton = st.button(
+        label="Login",
+        key="button2",
+        type="primary"
+    )
+    if authbutton and username_field is not None and pfield is not None:
+        checkuser = c.check_user(varType="existing", varUsername=username_field, varCredential=pfield)
+        if checkuser:
+            st.switch_page("pages/1_🏠_Home.py")
+        else:
+            st.error("error")
+
 
 def get_checkout_container():
     checkout_container = st.container(border=True)

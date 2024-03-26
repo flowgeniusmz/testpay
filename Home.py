@@ -1,6 +1,7 @@
 import streamlit as st
 from stripe_paywall import stripe_display as sdisplay, stripe_functions as sfunction, stripe_sessionstate as ssession
 import tease_name as tn
+import connections as c
 
 sdisplay.display_background_image()
 
@@ -25,13 +26,17 @@ if queryp is not None:
     with form:
 
         #username = st.text_input(label="username", value=updated_session.customer_details.email, disabled=True)
-        username = st.text_input(label="Username", value=uname)
+        username = st.text_input(label="Username", value=uname, disabled=True)
         credential = st.text_input(label="Password", type="password", value=cred)
-        submit = st.form_submit_button(label="Submit", type="primary")
+        submit = st.form_submit_button(label="Create Account", type="primary")
         if submit:
             if credential is not None:
-                st.success("Submit to supabase")
-                st.rerun()
+                checkuser = c.check_user(varType="new", varUsername=username, varCredential=credential)
+                if checkuser:
+                    st.switch_page("pages/1_🏠_Home.py")
+                else:
+                    st.error(body="error")
+
             else:
                 st.error("no password")
 else: 
